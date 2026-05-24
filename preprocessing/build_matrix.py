@@ -3,7 +3,7 @@ import pandas as pd
 
 
 # =========================================================
-# ✅ MOVIELENS 100K
+#   MOVIELENS 100K
 # =========================================================
 def build_movielens_100k(input_path, output_path):
     """
@@ -40,12 +40,12 @@ def build_movielens_100k(input_path, output_path):
     # Save matrix
     np.save(output_path, R)
 
-    print(f"✅ ML-100K matrix saved at {output_path}")
-    print(f"✅ Shape: {R.shape}, Interactions: {np.sum(R)}")
+    print(f"  ML-100K matrix saved at {output_path}")
+    print(f"  Shape: {R.shape}, Interactions: {np.sum(R)}")
 
 
 # =========================================================
-# ✅ MOVIELENS 1M
+#   MOVIELENS 1M
 # =========================================================
 def build_movielens_1m(input_path, output_path):
     """
@@ -84,12 +84,12 @@ def build_movielens_1m(input_path, output_path):
     # Save matrix
     np.save(output_path, R)
 
-    print(f"✅ ML-1M matrix saved at {output_path}")
-    print(f"✅ Shape: {R.shape}, Interactions: {np.sum(R)}")
+    print(f"  ML-1M matrix saved at {output_path}")
+    print(f"  Shape: {R.shape}, Interactions: {np.sum(R)}")
 
 
 # =========================================================
-# ✅ LAST.FM 360K (WITH SAMPLING)
+#   LAST.FM 360K (WITH SAMPLING)
 # =========================================================
 def build_lastfm(input_path, output_path, min_playcount=5, max_users=5000):
     """
@@ -166,12 +166,12 @@ def build_lastfm(input_path, output_path, min_playcount=5, max_users=5000):
     # -----------------------------
     np.save(output_path, R)
 
-    print(f"✅ LastFM matrix saved at {output_path}")
-    print(f"✅ Shape: {R.shape}, Interactions: {np.sum(R)}")
+    print(f"  LastFM matrix saved at {output_path}")
+    print(f"  Shape: {R.shape}, Interactions: {np.sum(R)}")
 
 
 # =========================================================
-# ✅ MAIN EXECUTION
+#   MAIN EXECUTION
 # =========================================================
 if __name__ == "__main__":
 
@@ -181,7 +181,7 @@ if __name__ == "__main__":
     """
 
     # -----------------------------
-    # ✅ MOVIELENS 100K
+    #   MOVIELENS 100K
     # -----------------------------
     build_movielens_100k(
          input_path="../data/raw/ml-100k/u.data",
@@ -189,7 +189,7 @@ if __name__ == "__main__":
      )
 
     # -----------------------------
-    # ✅ MOVIELENS 1M
+    #   MOVIELENS 1M
     # -----------------------------
     #build_movielens_1m(
     #     input_path="../data/raw/ml-1m/ratings.dat",
@@ -197,7 +197,7 @@ if __name__ == "__main__":
     # )
 
     # -----------------------------
-    # ✅ LAST.FM 360K
+    #   LAST.FM 360K
     # -----------------------------
     #build_lastfm(
     #    input_path="../data/raw/lastfm-360k/usersha1-artmbid-artname-plays.tsv",
