@@ -45,7 +45,7 @@ class FairRankingMF:
 
             np.random.shuffle(samples)
 
-            # ✅ STEP 1: PURE BPR TRAINING
+            #   STEP 1: PURE BPR TRAINING
             for (u, i, j) in samples:
 
                 x_ui = self.predict(u, i)
@@ -70,10 +70,10 @@ class FairRankingMF:
                     -grad * u_old - self.reg * self.V[j]
                 )
 
-            # ✅ STEP 2: COMPUTE EXPOSURE
+            #   STEP 2: COMPUTE EXPOSURE
             self.update_exposure(R, top_k)
 
-            # ✅ STEP 3: GLOBAL FAIRNESS CORRECTION
+            #   STEP 3: GLOBAL FAIRNESS CORRECTION
             exp0, exp1 = self.group_exposure
 
             imbalance = (exp0 - exp1) / (exp0 + exp1 + 1e-6)
