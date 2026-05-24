@@ -1,0 +1,1 @@
+Global Exposure-Aware Matrix Factorization (GEA-MF) model. The method extends the standard Bayesian Personalized Ranking (BPR) framework by introducing a global mechanism to control exposure imbalance across item groups.
