@@ -27,7 +27,7 @@ from experiments.config import config
 
 
 # ===================================================
-# ✅ LOAD DATASET
+#   LOAD DATASET
 # ===================================================
 def load_dataset(name):
 
@@ -41,15 +41,15 @@ def load_dataset(name):
 
     path = os.path.join(base, paths[name])
 
-    print(f"\n📂 Loading dataset: {name}")
+    print(f"\n  Loading dataset: {name}")
     R = load_data(path)
 
-    print(f"✅ Shape: {R.shape}, Interactions: {R.sum()}")
+    print(f"  Shape: {R.shape}, Interactions: {R.sum()}")
     return R
 
 
 # ===================================================
-# ✅ RUN SINGLE DATASET (WITH MULTIPLE RUNS ✅)
+#   RUN SINGLE DATASET (WITH MULTIPLE RUNS  )
 # ===================================================
 def run_single_dataset(dataset_name, n_runs=5):
 
@@ -63,7 +63,7 @@ def run_single_dataset(dataset_name, n_runs=5):
     all_runs = defaultdict(list)
 
     # ----------------------------------------
-    # ✅ MULTIPLE RUNS
+    #   MULTIPLE RUNS
     # ----------------------------------------
     for run in range(n_runs):
 
@@ -73,7 +73,7 @@ def run_single_dataset(dataset_name, n_runs=5):
         results = {}
 
         # --------------------------------------
-        # ✅ POPULARITY
+        #   POPULARITY
         # --------------------------------------
         pop = PopularityModel()
         pop.train(R)
@@ -86,7 +86,7 @@ def run_single_dataset(dataset_name, n_runs=5):
         }
 
         # --------------------------------------
-        # ✅ MF
+        #   MF
         # --------------------------------------
         mf = MF(R.shape[0], R.shape[1])
         mf.train(R, config["epochs"])
@@ -98,7 +98,7 @@ def run_single_dataset(dataset_name, n_runs=5):
         }
 
         # --------------------------------------
-        # ✅ SVD++
+        #   SVD++
         # --------------------------------------
         svdpp = SVDpp(R.shape[0], R.shape[1])
         svdpp.train(R, config["epochs"])
@@ -110,7 +110,7 @@ def run_single_dataset(dataset_name, n_runs=5):
         }
 
         # --------------------------------------
-        # ✅ BPR
+        #   BPR
         # --------------------------------------
         bpr = BPR(R.shape[0], R.shape[1])
         bpr.train(samples, config["epochs"])
@@ -122,7 +122,7 @@ def run_single_dataset(dataset_name, n_runs=5):
         }
 
         # --------------------------------------
-        # ✅ FR-MF (FINAL MODEL)
+        #   FR-MF (FINAL MODEL)
         # --------------------------------------
         frmf = FairRankingMF(
             R.shape[0],
@@ -149,13 +149,13 @@ def run_single_dataset(dataset_name, n_runs=5):
         }
 
         # --------------------------------------
-        # ✅ STORE RUN RESULTS
+        #   STORE RUN RESULTS
         # --------------------------------------
         for model, m in results.items():
             all_runs[model].append(m)
 
     # ----------------------------------------
-    # ✅ COMPUTE MEAN ± STD
+    #   COMPUTE MEAN ± STD
     # ----------------------------------------
     final_results = {}
 
@@ -177,9 +177,9 @@ def run_single_dataset(dataset_name, n_runs=5):
         }
 
     # ----------------------------------------
-    # ✅ PRINT FINAL TABLE
+    #   PRINT FINAL TABLE
     # ----------------------------------------
-    print("\n📊 FINAL RESULTS TABLE (mean ± std)\n")
+    print("\n  FINAL RESULTS TABLE (mean ± std)\n")
 
     for model, m in final_results.items():
         print(f"{model:12} | "
@@ -191,7 +191,7 @@ def run_single_dataset(dataset_name, n_runs=5):
 
 
 # ===================================================
-# ✅ SAVE RESULTS
+#   SAVE RESULTS
 # ===================================================
 def save_results(all_results):
 
@@ -217,15 +217,15 @@ def save_results(all_results):
                     f"Exposure={m['parity_mean']:.4f}±{m['parity_std']:.4f}\n"
                 )
 
-    print(f"\n✅ Results saved to {path}")
+    print(f"\n  Results saved to {path}")
 
 
 # ===================================================
-# ✅ MAIN RUN
+#   MAIN RUN
 # ===================================================
 def run():
 
-    # ✅ Start with ml-100k; later extend
+    #   Start with ml-100k; later extend
     datasets = ["ml-100k", "ml-1m", "lastfm"]
 
     #datasets = ["ml-100k"]
