@@ -1,5 +1,5 @@
 config = {
-    # ✅ Choose dataset here
+    #  Choose dataset here
     #"dataset": "ml-100k",   # ← change to ml-1m / lastfm
     #"dataset": "ml-1m",  # ← change to ml-1m / lastfm
     #"dataset": "lastfm",  # ← change to ml-1m / lastfm
@@ -9,10 +9,10 @@ config = {
     "lr": 0.01,
     "reg": 0.01,
 
-    # ✅ REMOVE single alpha
+    #  REMOVE single alpha
     "alpha": 0.01,
 
-    # ✅ ADD alpha list
+    #  ADD alpha list
     #"alpha_list": [0.02, 0.05, 0.1, 0.2, 0.3],
 
 
